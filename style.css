@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --bright-red: hsl(12, 88%, 59%);
+  --dark-blue: hsl(228, 39%, 23%);
+  --dark-grayish-blue: hsl(227, 12%, 61%);
+  --very-dark-blue: hsl(233, 12%, 13%);
+  --very-pale-red: hsl(13, 100%, 96%);
+  --very-light-gray: hsl(0, 0%, 98%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Be Vietnam Pro", sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  position: relative;
+  padding: 2rem 1.5rem;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container img {
+  width: 120px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.desktop-menu {
+  display: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 5rem;
+  /* Position the left edge of the element in the center of the parent container. */
+  left: 50%;
+  /* Move the element to the left by half of its own width. */
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 900px;
+  height: 0;
+  background-color: hsla(240, 0.6%, 64.9%, 0.12);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown-menu li {
+  padding: 0.7rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown-menu.open {
+  height: 250px;
+  padding: 1rem 0;
+}
+
+.dropdown-menu a {
+  color: var(--dark-blue);
+  font-weight: 700;
+}
+
+.dropdown-menu a:hover {
+  color: var(--bright-red);
+}
+
+.toggle-button i {
+  font-size: 1.5rem;
+}
+
+.action-button {
+  display: none;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .desktop-menu,
+  .action-button {
+    display: block;
+  }
+
+  .desktop-menu ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links {
+    color: var(--dark-blue);
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-links::after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    background-color: var(--very-dark-blue);
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+  }
+
+  .nav-links:hover::after {
+    opacity: 1;
+  }
+
+  .action-button {
+    background-color: var(--bright-red);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .action-button:hover {
+    transform: translateY(2px);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .toggle-button,
+  .dropdown-menu {
+    display: none;
+  }
+}
