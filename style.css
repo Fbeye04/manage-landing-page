@@ -146,6 +146,7 @@ h1 {
   font-size: 2rem;
   color: var(--dark-blue);
   margin-bottom: 1rem;
+  text-wrap: balance;
 }
 
 p {
@@ -167,6 +168,55 @@ p {
 .action-button:hover {
   transform: translateY(2px);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.features-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+}
+
+.features-text {
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+h2 {
+  font-size: 1.7rem;
+  color: var(--dark-blue);
+  margin-bottom: 1rem;
+  text-wrap: balance;
+}
+
+.feature-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--very-pale-red);
+  border-radius: 50px 0 0 50px;
+  /* The width will be set to 100% of the screen size but reduced by 1 rem. */
+  width: calc(100% - 1rem);
+  /* The previous width will be shifted to the left so that the empty space moves to the left. */
+  margin-left: 1rem;
+  padding: 0.2rem 0;
+}
+
+.feature-heading span {
+  background-color: var(--bright-red);
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: var(--dark-blue);
+}
+
+.feature-description {
+  margin: 1rem 0 2rem 0;
+  padding: 0 1.5rem;
 }
 
 .attribution {
@@ -191,6 +241,15 @@ p {
     margin-right: auto;
     padding: 0;
   }
+
+  .features-container {
+    flex-direction: row;
+    margin: 3rem auto;
+  }
+
+  .feature-description {
+    margin: 1rem 0;
+  }
 }
 
 /* Desktop */
@@ -206,6 +265,24 @@ p {
     width: 80%;
     max-width: 1200px;
     margin: 0 auto;
+  }
+
+  .features-container {
+    margin: 3rem auto;
+  }
+
+  .features-text {
+    text-align: left;
+    max-width: 450px;
+  }
+
+  .feature-heading {
+    background-color: transparent;
+  }
+
+  .feature-description {
+    margin-left: 98px;
+    padding: 0;
   }
 
   .desktop-menu,
