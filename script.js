@@ -1,6 +1,7 @@
 const menuButton = document.getElementById("menu-button");
 const menuButtonIcon = menuButton.querySelector("i");
 const dropDownMenu = document.getElementById("dropdown-menu");
+const sliderWrapper = document.querySelector(".slider-wrapper");
 const slider = document.querySelector(".slider");
 const arrowBtns = document.querySelectorAll(".slider-wrapper i");
 const firstSlideWidth = slider.querySelector(".slide").offsetWidth;
@@ -60,11 +61,17 @@ const infiniteScroll = () => {
     slider.classList.add("no-transition");
     slider.scrollLeft = slider.scrollWidth - 2 * slider.offsetWidth;
     slider.classList.remove("no-transition");
-  } else if (slider.scrollLeft === slider.scrollWidth - slider.offsetWidth) {
+  } else if (
+    Math.ceil(slider.scrollLeft) ===
+    slider.scrollWidth - slider.offsetWidth
+  ) {
     slider.classList.add("no-transition");
     slider.scrollLeft = slider.offsetWidth;
     slider.classList.remove("no-transition");
   }
+
+  clearTimeout(timeoutId);
+  if (!sliderWrapper.matches(":hover")) autoPlay();
 };
 
 menuButton.addEventListener("click", () => {
@@ -77,3 +84,5 @@ slider.addEventListener("mousedown", dragStart);
 slider.addEventListener("mousemove", dragging);
 document.addEventListener("mouseup", dragStop);
 slider.addEventListener("scroll", infiniteScroll);
+sliderWrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
+sliderWrapper.addEventListener("mouseleave", autoPlay);

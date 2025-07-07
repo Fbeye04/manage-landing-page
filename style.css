@@ -325,6 +325,68 @@ h3 {
   display: block;
 }
 
+.simplify {
+  background-color: var(--bright-red);
+  background-image: url("./images/bg-simplify-section-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 3rem 1rem;
+}
+
+.simplify-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.simplify-banner {
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+  max-width: 300px;
+}
+
+#get-started-white {
+  background-color: white;
+  color: var(--bright-red);
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  margin: 0 auto;
+}
+
+#get-started-white:hover {
+  transform: translateY(2px);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+  background-color: var(--very-dark-blue);
+  padding: 2rem 1rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inbox-control {
+  width: 100%;
+}
+
+#email {
+}
+
+.copyright-text {
+  padding: 0;
+  margin-bottom: 0;
+}
+
 /* Tablet */
 @media (min-width: 768px) {
   .container {
@@ -352,6 +414,10 @@ h3 {
   .slider {
     grid-auto-columns: calc((100% / 2) - 9px);
   }
+
+  .simplify-banner {
+    max-width: 400px;
+  }
 }
 
 /* Desktop */
@@ -361,6 +427,19 @@ h3 {
     height: 550px;
     top: -200px;
     right: -300px;
+  }
+
+  body::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background-image: url("./images/bg-tablet-pattern.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 800px;
+    height: 550px;
+    bottom: 300px;
+    left: -300px;
   }
 
   .container {
@@ -459,5 +538,26 @@ h3 {
 
   .slider {
     grid-auto-columns: calc((100% / 3) - 12px);
+  }
+
+  .simplify {
+    background-image: url("./images/bg-simplify-section-desktop.svg");
+    margin-top: 5rem;
+  }
+
+  .simplify-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .simplify-banner {
+    max-width: 500px;
+    font-size: 2.3rem;
+    text-align: left;
+    text-wrap: wrap;
+  }
+
+  #get-started-white {
+    margin: 0;
   }
 }
