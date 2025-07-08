@@ -6,6 +6,8 @@ const slider = document.querySelector(".slider");
 const arrowBtns = document.querySelectorAll(".slider-wrapper i");
 const firstSlideWidth = slider.querySelector(".slide").offsetWidth;
 const sliderChildrens = [...slider.children];
+const inboxControl = document.getElementById("inbox-control");
+const email = document.getElementById("email");
 
 let isDragging = false,
   startX,
@@ -74,6 +76,51 @@ const infiniteScroll = () => {
   if (!sliderWrapper.matches(":hover")) autoPlay();
 };
 
+const setError = (element, message) => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector(".error");
+
+  errorDisplay.innerText = message;
+  inputControl.classList.add("error");
+  inputControl.classList.remove("success");
+};
+
+const setSuccess = (element) => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector(".error");
+
+  errorDisplay.innerText = "";
+  inputControl.classList.add("success");
+  inputControl.classList.remove("error");
+};
+
+const isValidEmail = (email) => {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+};
+
+const validateEmail = () => {
+  const emailValue = email.value.trim();
+
+  if (emailValue === "") {
+    setError(email, "Email is required");
+  } else if (!isValidEmail(emailValue)) {
+    setError(email, "Please insert a valid email");
+  } else {
+    setSuccess(email);
+  }
+};
+
+const clearValidation = (element) => {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector(".error");
+
+  errorDisplay.innerText = "";
+  inputControl.classList.remove("success");
+  inputControl.classList.remove("error");
+};
+
 menuButton.addEventListener("click", () => {
   dropDownMenu.classList.toggle("open");
   const isOpen = dropDownMenu.classList.contains("open");
@@ -86,3 +133,17 @@ document.addEventListener("mouseup", dragStop);
 slider.addEventListener("scroll", infiniteScroll);
 sliderWrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
 sliderWrapper.addEventListener("mouseleave", autoPlay);
+
+inboxControl.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  validateEmail();
+});
+
+email.addEventListener("input", (e) => {
+  const emailValue = e.target.value.trim();
+
+  if (emailValue === "") {
+    clearValidation(email);
+  }
+});

@@ -7,6 +7,8 @@
   --very-dark-blue: hsl(233, 12%, 13%);
   --very-pale-red: hsl(13, 100%, 96%);
   --very-light-gray: hsl(0, 0%, 98%);
+  --success-border: #09c372;
+  --error-border: #ff3860;
 }
 
 * {
@@ -51,7 +53,7 @@ header {
   align-items: center;
 }
 
-.container img {
+.header-container img {
   width: 120px;
 }
 
@@ -372,19 +374,134 @@ footer {
 .footer-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin-top: 2rem;
 }
 
 .inbox-control {
-  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
 }
 
-#email {
+.input-error {
+  flex-grow: 1;
+}
+
+.input-error input {
+  width: 100%;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+  font-size: 14px;
+  font-family: "Be Vietnam Pro", sans-serif;
+  display: block;
+}
+
+.input-error input:focus-visible {
+  outline: none;
+  border-color: var(--dark-blue);
+}
+
+.input-error .error {
+  color: var(--error-border);
+  font-size: 0.8rem;
+  font-style: italic;
+  padding: 0.5rem 0 0 1.5rem;
+}
+
+.input-error.error input {
+  border-color: var(--error-border);
+}
+
+.input-error.success input {
+  border-color: var(--success-border);
+}
+
+.go-button {
+  background-color: var(--bright-red);
+  color: white;
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(68, 67, 67, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.go-button:hover {
+  transform: translateY(2px);
+  box-shadow: 0px 2px 4px rgba(41, 41, 41, 0.2);
+}
+
+.menu-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3rem;
+  margin-top: 2rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.list li a {
+  color: white;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.list li a:hover,
+.social-media a:hover i {
+  color: var(--bright-red);
+}
+
+.social-media {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  margin-top: 2rem;
+}
+
+.social-media i {
+  color: white;
+  font-size: 2.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-media i:hover {
+  color: var(--bright-red);
+}
+
+.img-title {
+  display: block;
+  margin: 2rem auto;
+  width: 150px;
+  filter: brightness(0) invert(1);
 }
 
 .copyright-text {
   padding: 0;
   margin-bottom: 0;
+  text-align: center;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.copyright-text a {
+  color: var(--bright-red);
+  box-shadow: inset 0 0 0 0 var(--bright-red);
+  margin: 0 -0.15rem;
+  padding: 0 0.25rem;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.copyright-text a:hover {
+  box-shadow: inset 100px 0 0 0 var(--bright-red);
+  color: white;
 }
 
 /* Tablet */
@@ -417,6 +534,26 @@ footer {
 
   .simplify-banner {
     max-width: 400px;
+  }
+
+  .footer-container {
+    margin: 1rem auto;
+  }
+
+  .list li a {
+    font-size: 1rem;
+  }
+
+  .menu-list {
+    padding: 0 5rem;
+  }
+
+  .img-title {
+    width: 180px;
+  }
+
+  .copyright-text {
+    font-size: 1rem;
   }
 }
 
@@ -559,5 +696,46 @@ footer {
 
   #get-started-white {
     margin: 0;
+  }
+
+  .inbox-control {
+    grid-area: email;
+  }
+
+  .menu-list {
+    grid-area: menu;
+    margin-top: 0;
+    gap: 5rem;
+  }
+
+  .social-media {
+    grid-area: sosmed;
+    margin-top: 0;
+    gap: 0.5rem;
+    align-self: end;
+  }
+
+  .social-media i {
+    font-size: 1.7rem;
+  }
+
+  .img-title {
+    grid-area: title;
+    margin: 0 auto;
+  }
+
+  .copyright-text {
+    grid-area: copyright;
+    align-self: end;
+    text-align: right;
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-areas:
+      "title menu email"
+      "sosmed menu copyright";
+    align-items: start;
+    margin: 1rem auto;
   }
 }

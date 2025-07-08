@@ -193,14 +193,16 @@
 
     <footer>
       <div class="container footer-container">
-        <form class="inbox-control">
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Updates in your inbox..." />
-          <button class="go-button">Go</button>
-          <div class="error"></div>
+        <form id="inbox-control" class="inbox-control">
+          <div class="input-error">
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Updates in your inbox..." />
+            <div class="error"></div>
+          </div>
+          <button id="go-button" class="go-button">Go</button>
         </form>
 
         <div class="menu-list">
@@ -226,13 +228,13 @@
           <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
         </div>
 
-        <img src="./images/logo.svg" alt="manage app log" />
+        <img class="img-title" src="./images/logo.svg" alt="manage app log" />
 
         <p class="copyright-text">
           Copyright 2020. Coded by
           <a href="https://www.linkedin.com/in/muhammad-fachrezi-barus"
             >Fachrezi</a
-          >.All Rights Reserved
+          >. All Rights Reserved
         </p>
       </div>
     </footer>
